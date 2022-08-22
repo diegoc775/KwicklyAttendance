@@ -66,7 +66,7 @@ class Dynamo_D_B_Connector {
     }
 
     //IS GOOD OR NOT
-    fun isGoodOrNah(studentEmail: String, today: String):Boolean {
+     fun isGoodOrNah(studentEmail: String, today: String):Boolean {
         var check = true
         execute {
             val attendances = arrayListOf<AttendanceRecord>()
@@ -80,15 +80,17 @@ class Dynamo_D_B_Connector {
             }
             attendances.forEach {
 
-               if(it.dateAttended.equals(today) && it.email.equals(studentEmail)){
+               if(it.dateAttended.equals(today)){
                    check = false
-                   cancel()
+
 
                }
             }
         }
         return check
     }
+
+
 
     //checks for duplicate emails
      fun getSpecificAttendces(email: String) {
@@ -127,6 +129,35 @@ class Dynamo_D_B_Connector {
         }
     }
 
+    // Function that RETURNS VALUE FROM COROUTINE
+    //you have to use lifecycle.scope and make another coroutine when you call this
+    suspend fun notDoneYet(studentEmail: String, today: String): Boolean {
+        return withContext(Dispatchers.IO) {
+            // Blocking network request code
+            var check = true
+            val attendances = arrayListOf<AttendanceRecord>()
+            val attributeValues = mutableListOf<AttributeValue>()
+            attributeValues.add(AttributeValue(studentEmail))
+
+            val scanFilter = ScanFilter("email", ComparisonOperator.EQ, attributeValues)
+            getTable().scan( scanFilter
+            ).allResults.forEach {
+                attendances.add(Gson().fromJson(Document.toJson(it), AttendanceRecord::class.java))
+            }
+            attendances.forEach {
+
+                if(it.dateAttended.equals(today)){
+                    check = false
+
+
+                }
+            }
+
+            return@withContext check
+        }
+
+    }
+
 
     private fun execute(executionBlock: suspend CoroutineScope.() -> Unit) {
         GlobalScope.launch(Dispatchers.IO) {
@@ -137,9 +168,6 @@ class Dynamo_D_B_Connector {
             }
         }
     }
-
-
-
 
 
 }

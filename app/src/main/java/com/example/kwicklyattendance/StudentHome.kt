@@ -1,13 +1,19 @@
 package com.example.kwicklyattendance
 
+import android.app.PendingIntent.getActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.example.kwicklyattendance.databinding.ActivityAddStudentBinding.inflate
 import com.example.kwicklyattendance.databinding.ActivityAdminHomeBinding.inflate
 import com.example.kwicklyattendance.databinding.ActivityAttendanceDetailsBinding.inflate
 import com.example.kwicklyattendance.databinding.ActivityStudentHomeBinding
 import com.example.kwicklyattendance.databinding.LoginActivityBinding.inflate
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.util.*
 
@@ -30,20 +36,14 @@ class StudentHome : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar!!.title = "${firstName} ${lastName} Home"
         binding.studentDateLabel.text = date
+        binding.btnCheckIn.setEnabled(false)
+        attendanceRecordCoroutine()
 
-        doesDuplicatesExist(email, date)
 
         binding.btnCheckIn.setOnClickListener{
-            if(studentDynamoDB.isGoodOrNah(email, date).equals(false)){
-                Toast.makeText(applicationContext,"You have already checked in today. Please logout",Toast.LENGTH_SHORT).show()
-                binding.btnCheckIn.setEnabled(false)
-            }
-            else{
-                var newAttendanceRecord = AttendanceRecord(UUID.randomUUID().toString(), email, date)
-                studentDynamoDB.createAttendanceRecord(newAttendanceRecord)
-                Toast.makeText(applicationContext,"${firstName} has checked in today",Toast.LENGTH_SHORT).show()
-            }
-
+            var newAttendanceRecord = AttendanceRecord(UUID.randomUUID().toString(), email, date)
+            studentDynamoDB.createAttendanceRecord(newAttendanceRecord)
+            binding.btnCheckIn.setEnabled(false)
         }
         binding.btnFinishCheckIn.setOnClickListener{
             finish()
@@ -59,12 +59,25 @@ class StudentHome : AppCompatActivity() {
         val currDay = "${month+1}/${day}/${year}"
         return currDay
     }
-    fun doesDuplicatesExist(email: String, date: String){
-        if(studentDynamoDB.isGoodOrNah(email, date) == false){
-            binding.btnCheckIn.setEnabled(false)
-        }
-        else{
-            binding.btnCheckIn.setEnabled(true)
+    fun attendanceRecordCoroutine(){
+        this.lifecycleScope.launch(Dispatchers.IO) {
+            var check = studentDynamoDB.notDoneYet(email, date)
+            if(check == false){
+                GlobalScope.launch(Dispatchers.Main) {
+                    Toast.makeText(applicationContext,"You have already checked in today. Please logout",Toast.LENGTH_SHORT).show()
+                    //binding.btnCheckIn.setEnabled(false)
+                }
+
+            }
+            else{
+
+
+                GlobalScope.launch(Dispatchers.Main) {
+                    Toast.makeText(applicationContext,"${firstName} ${lastName}: Please click to check in",Toast.LENGTH_SHORT).show()
+                    binding.btnCheckIn.setEnabled(true)
+                }
+
+            }
         }
     }
 }
