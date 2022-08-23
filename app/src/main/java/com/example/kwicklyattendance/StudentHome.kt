@@ -1,6 +1,7 @@
 package com.example.kwicklyattendance
 
 import android.app.PendingIntent.getActivity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -46,7 +47,8 @@ class StudentHome : AppCompatActivity() {
             binding.btnCheckIn.setEnabled(false)
         }
         binding.btnFinishCheckIn.setOnClickListener{
-            finish()
+            intent = Intent(applicationContext, AttendanceDetailsActivity::class.java)
+            startActivity(intent)
         }
 
 

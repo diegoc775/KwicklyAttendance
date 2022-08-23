@@ -17,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.btnLogin.setOnClickListener{
+
             /////////////////////////////////This is just for testing purposes//////////////////////
             intent = Intent(applicationContext, StudentHome::class.java)
             startActivity(intent)

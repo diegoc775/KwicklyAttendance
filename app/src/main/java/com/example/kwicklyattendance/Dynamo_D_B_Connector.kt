@@ -1,5 +1,6 @@
 package com.example.kwicklyattendance
 
+import android.app.Activity
 import androidx.lifecycle.lifecycleScope
 import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.internal.StaticCredentialsProvider
@@ -21,13 +22,13 @@ class Dynamo_D_B_Connector {
 
 
 
-
+    //"AKIAXW24I7IMEGYSPBMO" "2vkYUJPCR7TXLWrq4sCG5b+TSWO3WqnDTbvpWc4s"
     //access/secretKey is how to login to the AWS account
     private val credentialsProvider =
         StaticCredentialsProvider(
             BasicAWSCredentials(
-                "AKIAXW24I7IMEGYSPBMO",
-                "2vkYUJPCR7TXLWrq4sCG5b+TSWO3WqnDTbvpWc4s")
+                "AKIAXW24I7IMJ2AG25EB",
+                "sX1nS/4BAvKGXff/L2CWGyD3u5Md/I+htIKFRDPW\n")
         )
 
     //Use the credentials to log into the server where the account is located
@@ -65,35 +66,12 @@ class Dynamo_D_B_Connector {
         }
     }
 
-    //IS GOOD OR NOT
-     fun isGoodOrNah(studentEmail: String, today: String):Boolean {
-        var check = true
-        execute {
-            val attendances = arrayListOf<AttendanceRecord>()
-            val attributeValues = mutableListOf<AttributeValue>()
-            attributeValues.add(AttributeValue(studentEmail))
-
-            val scanFilter = ScanFilter("email", ComparisonOperator.EQ, attributeValues)
-            getTable().scan( scanFilter
-            ).allResults.forEach {
-                attendances.add(Gson().fromJson(Document.toJson(it), AttendanceRecord::class.java))
-            }
-            attendances.forEach {
-
-               if(it.dateAttended.equals(today)){
-                   check = false
-
-
-               }
-            }
-        }
-        return check
-    }
 
 
 
-    //checks for duplicate emails
-     fun getSpecificAttendces(email: String) {
+
+    //Used to collect data for arraylist of the recyclerview in student detail activity
+     fun putSpecificAttendancesIntoArrList(email: String, otherArrLst: ArrayList<String>, activity : AttendanceDetailsInterface) {
         execute {
             val attendances = arrayListOf<AttendanceRecord>()
             val attributeValues = mutableListOf<AttributeValue>()
@@ -105,10 +83,12 @@ class Dynamo_D_B_Connector {
                 attendances.add(Gson().fromJson(Document.toJson(it), AttendanceRecord::class.java))
             }
             attendances.forEach {
-                println(" Got Attendance id ${it.id}")
-                println(" Got Attendance email ${it.email}")
-                println(" Got Attendance dateAttended ${it.dateAttended}")
+//                println(" Got Attendance id ${it.id}")
+//                println(" Got Attendance email ${it.email}")
+//                println(" Got Attendance dateAttended ${it.dateAttended}")
+                otherArrLst.add(it.dateAttended)
             }
+            activity.populate(otherArrLst)
         }
     }
 
@@ -158,7 +138,7 @@ class Dynamo_D_B_Connector {
 
     }
 
-
+    //starts coroutine scope
     private fun execute(executionBlock: suspend CoroutineScope.() -> Unit) {
         GlobalScope.launch(Dispatchers.IO) {
             try {

@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Diego/Documents/Emonics/Emonics Projects/KwicklyAttendance/app/src/main/res/layout/activity_attendance_details.xml" value="0.25416666666666665" />
         <entry key="..\:/Diego/Documents/Emonics/Emonics Projects/KwicklyAttendance/app/src/main/res/layout/activity_remove_student.xml" value="0.22146739130434784" />
         <entry key="..\:/Diego/Documents/Emonics/Emonics Projects/KwicklyAttendance/app/src/main/res/layout/activity_student_home.xml" value="0.22146739130434784" />
+        <entry key="..\:/Diego/Documents/Emonics/Emonics Projects/KwicklyAttendance/app/src/main/res/layout/card_view_design.xml" value="0.253125" />
         <entry key="..\:/Diego/Documents/Emonics/Emonics Projects/KwicklyAttendance/app/src/main/res/layout/login_activity.xml" value="0.23802083333333332" />
       </map>
     </option>
