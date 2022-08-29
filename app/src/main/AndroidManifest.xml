@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.kwicklyattendance">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -17,28 +18,35 @@
         android:theme="@style/Theme.KwicklyAttendance"
         tools:targetApi="31">
         <activity
-            android:name=".RemoveStudentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddStudentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AttendanceDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdminHome"
-            android:exported="false" />
-        <activity
-            android:name=".StudentHome"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".ActivityClasses.SplashScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ActivityClasses.RemoveStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityClasses.AddStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityClasses.AttendanceDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityClasses.AdminHome"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityClasses.StudentHome"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityClasses.LoginActivity"
+            android:exported="false">
+
         </activity>
     </application>
 

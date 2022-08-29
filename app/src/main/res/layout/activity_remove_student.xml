@@ -4,46 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RemoveStudentActivity">
+    tools:context=".ActivityClasses.RemoveStudentActivity">
 
     <EditText
         android:id="@+id/enterEmailToRemove"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="36dp"
         android:ems="10"
-        android:hint="Email:"
+        android:hint="Enter Email:"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterLastNameToRemove" />
-
-    <EditText
-        android:id="@+id/enterLastNameToRemove"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Last Name:"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterFirstNameToRemove" />
-
-    <EditText
-        android:id="@+id/enterFirstNameToRemove"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="136dp"
-        android:ems="10"
-        android:hint="First Name:"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/removeStudentLabel"
@@ -74,11 +49,24 @@
         android:id="@+id/btnFinishRemove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Finish"
+        android:text="Remove"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.835"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.926" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="451dp"
+        android:layout_height="762dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.516"
+        app:srcCompat="@drawable/remove_icon_no_background"
+        android:alpha="0.3"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
