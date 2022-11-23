@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "668849700441",
+    "project_id": "kwickly-attendance",
+    "storage_bucket": "kwickly-attendance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668849700441:android:58a93c544bfbd1a55cbb48",
+        "android_client_info": {
+          "package_name": "com.example.kwicklyattendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668849700441-crpuo0egktertumq07shhtn7qnss0jvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1IgO9jaJeAA677JxT9cv0_ikbd-uUniI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668849700441-crpuo0egktertumq07shhtn7qnss0jvo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668849700441:android:fbf8456e0bd2d8e65cbb48",
+        "android_client_info": {
+          "package_name": "com.example.kwicklyattendance.ActivityClasses"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668849700441-crpuo0egktertumq07shhtn7qnss0jvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1IgO9jaJeAA677JxT9cv0_ikbd-uUniI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668849700441-crpuo0egktertumq07shhtn7qnss0jvo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

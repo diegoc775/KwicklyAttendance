@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.kwicklyattendance.HelperClasses.Dynamo_D_B_Connector
 import com.example.kwicklyattendance.HelperClasses.UserRecord
 import com.example.kwicklyattendance.databinding.ActivityAddStudentBinding
-
+//By:Diego Cobos
 class AddStudentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddStudentBinding
     var firstNameToAdd = ""

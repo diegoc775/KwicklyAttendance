@@ -13,7 +13,7 @@ import com.example.kwicklyattendance.databinding.ActivityRemoveStudentBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
+//By:Diego Cobos
 class RemoveStudentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRemoveStudentBinding
     var emailToRemove = ""

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import com.example.kwicklyattendance.R
-
+//By:Diego Cobos
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

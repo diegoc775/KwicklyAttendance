@@ -12,7 +12,7 @@ import com.example.kwicklyattendance.Interfaces.AttendanceDetailsInterface
 import com.example.kwicklyattendance.HelperClasses.ItemsViewModel
 import com.example.kwicklyattendance.R
 import com.example.kwicklyattendance.databinding.ActivityAttendanceDetailsBinding
-
+//By:Diego Cobos
 class AttendanceDetailsActivity : AppCompatActivity(), AttendanceDetailsInterface {
     private lateinit var binding: ActivityAttendanceDetailsBinding
     var studentFirstName = ""

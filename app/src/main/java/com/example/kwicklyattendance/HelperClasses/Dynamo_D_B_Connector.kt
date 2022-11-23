@@ -17,18 +17,14 @@ import com.google.gson.Gson
 import kotlinx.coroutines.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
-
+//By:Diego Cobos
 class Dynamo_D_B_Connector {
     //The file with the majority of the interaction code between AWS and the application
-
-
-    //"AKIAXW24I7IMEGYSPBMO" "2vkYUJPCR7TXLWrq4sCG5b+TSWO3WqnDTbvpWc4s"
-    //access/secretKey is how to login to the AWS account
     private val credentialsProvider =
         StaticCredentialsProvider(
             BasicAWSCredentials(
-                "AKIAXW24I7IMJ2AG25EB",
-                "sX1nS/4BAvKGXff/L2CWGyD3u5Md/I+htIKFRDPW\n")
+                "XXXXXXXXXXXXXXXXX",
+                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n")
         )
 
     //Use the credentials to log into the server where the account is located
@@ -93,9 +89,7 @@ class Dynamo_D_B_Connector {
                     students.add(it)
 
                 }
-//                println(" Got Attendance id ${it.id}")
-//                println(" Got Attendance email ${it.email}")
-//                println(" Got Attendance dateAttended ${it.dateAttended}")
+
             }
             activity.populate(students)
         }
@@ -114,9 +108,7 @@ class Dynamo_D_B_Connector {
                 attendances.add(Gson().fromJson(Document.toJson(it), AttendanceRecord::class.java))
             }
             attendances.forEach {
-//                println(" Got Attendance id ${it.id}")
-//                println(" Got Attendance email ${it.email}")
-//                println(" Got Attendance dateAttended ${it.dateAttended}")
+
                 otherArrLst.add(it.dateAttended)
             }
             activity.populate(otherArrLst)

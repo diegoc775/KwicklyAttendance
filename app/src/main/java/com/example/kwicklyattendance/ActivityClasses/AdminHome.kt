@@ -1,8 +1,11 @@
 package com.example.kwicklyattendance.ActivityClasses
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +16,10 @@ import com.example.kwicklyattendance.HelperClasses.studentsCustomAdapter
 import com.example.kwicklyattendance.HelperClasses.studentsItemsVM
 import com.example.kwicklyattendance.Interfaces.studentsClickInterface
 import com.example.kwicklyattendance.Interfaces.studentsRVInterface
-
+import com.google.android.gms.tasks.Task
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
+//By:Diego Cobos
 class AdminHome : AppCompatActivity(), studentsRVInterface, studentsClickInterface {
     var firstName = ""
     var lastName = ""
@@ -49,7 +55,7 @@ class AdminHome : AppCompatActivity(), studentsRVInterface, studentsClickInterfa
         val studentAdapter = studentsCustomAdapter(studentItmsData, this)
         studentRecyclerView?.adapter = studentAdapter
         studentDynamoDB.getAllStudents( this)
-
+        studentRecyclerView?.adapter?.notifyDataSetChanged()
 
 
         btnAddStudent.setOnClickListener{
@@ -63,6 +69,8 @@ class AdminHome : AppCompatActivity(), studentsRVInterface, studentsClickInterfa
         btnLogOut.setOnClickListener {
             finish()
         }
+        FirebaseMessaging.getInstance().subscribeToTopic("/topics/admin")
+
 
     }
     //////////////////////////////////This is what allows the recyclerview to be updated on the scroll up/////////////////////
@@ -70,6 +78,7 @@ class AdminHome : AppCompatActivity(), studentsRVInterface, studentsClickInterfa
         super.onResume()
         println("This is the onresume being called")
         studentDynamoDB.getAllStudents( this)
+
 
 
     }

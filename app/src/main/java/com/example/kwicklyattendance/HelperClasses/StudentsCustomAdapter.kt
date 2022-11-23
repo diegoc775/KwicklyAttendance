@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kwicklyattendance.Interfaces.studentsClickInterface
 import com.example.kwicklyattendance.R
-
+//By:Diego Cobos
 class studentsCustomAdapter(private val mList: List<studentsItemsVM>, val listener : studentsClickInterface): RecyclerView.Adapter<studentsCustomAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // inflates the card_view_design view
@@ -16,10 +16,6 @@ class studentsCustomAdapter(private val mList: List<studentsItemsVM>, val listen
             .inflate(R.layout.student_card_view_design, parent, false)
 
         return ViewHolder(view)
-
-
-//        val itemBinding = ActivityAttendanceDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        return ViewHolder(itemBinding)
 
     }
 

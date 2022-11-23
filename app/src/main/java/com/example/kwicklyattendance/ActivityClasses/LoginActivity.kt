@@ -17,7 +17,7 @@ import com.example.kwicklyattendance.databinding.LoginActivityBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
+//By:Diego Cobos
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: LoginActivityBinding
     var enteredEmail = ""

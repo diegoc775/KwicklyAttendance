@@ -1,4 +1,5 @@
 package com.example.kwicklyattendance.HelperClasses
+//By:Diego Cobos
 //this is how the dynamo DB stores both student and admin data
 data class UserRecord(
     val UserEmail : String,
